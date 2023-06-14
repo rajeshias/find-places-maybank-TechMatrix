@@ -1,8 +1,15 @@
+Name: Rajesh Kanna C
+
+Assessment for TechMatrix, Maybank 
+
 npm install
 <br />
 npm start
 
+note: API key is public, will be disabled in the future, please replace the api key in the reducer file (initial state)
 
+
+Assignment:
 You need to design one simple single page and use Google Place Autocomplete to find
 places and show at map. the following requirements are compulsory.
 
@@ -27,4 +34,4 @@ codes, naming and make sure it would be scalable.
 
 
 
-API key is public, will be disabled in the future, please replace the api key in the reducer file (initial state)
+
