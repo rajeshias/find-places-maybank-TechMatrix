@@ -1,3 +1,7 @@
+npm install
+npm start
+
+
 You need to design one simple single page and use Google Place Autocomplete to find
 places and show at map. the following requirements are compulsory.
 
