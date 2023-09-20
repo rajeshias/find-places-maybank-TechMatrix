@@ -5,8 +5,7 @@ const useAutoselectForm = () => {
   const dispatch = useDispatch();
 
   const handleKeywordInput = e => {
-    const { value } = e.target;
-    dispatch(setInputKeyword(value));
+    dispatch(setInputKeyword(e.target.value));
   };
 
   const selectOptions = e => {

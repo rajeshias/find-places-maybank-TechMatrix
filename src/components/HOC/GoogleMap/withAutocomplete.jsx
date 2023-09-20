@@ -15,7 +15,7 @@ const withAutocomplete = Component => () => {
   const initAutocompletePlace = () => {
     const { map } = mapProps;
     const { options } = formState;
-    const autocomplete = new google.maps.places.Autocomplete(textboxRef.current, options);
+    const autocomplete = new google.maps.places.Autocomplete(textboxRef.current.input, options);
     autocomplete.bindTo('bounds', map);
 
     autocomplete.addListener('place_changed', () => {
@@ -32,6 +32,7 @@ const withAutocomplete = Component => () => {
       initAutocompletePlace();
     }
   }, [window.google?.maps]);
+
 
   return <Component textboxRef={textboxRef} />;
 };

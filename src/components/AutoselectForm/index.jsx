@@ -1,13 +1,6 @@
-import Box from '@mui/material/Box';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import Checkbox from '@mui/material/Checkbox';
-import FormGroup from '@mui/material/FormGroup';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-
+import React from 'react';
+import { Typography, Radio, Checkbox, Input, Row, Col } from 'antd';
+import 'antd/dist/reset.css'; // Import antd styles
 import withAutocomplete from 'components/HOC/GoogleMap/withAutocomplete';
 import useShallowEqualSelector from 'helpers/useShallowEqualSelector';
 import useAutoselectForm from './hooks/useAutoselectForm';
@@ -17,52 +10,45 @@ const AutoselectForm = ({ textboxRef }) => {
   const { handleKeywordInput, selectOptions } = useAutoselectForm();
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        boxShadow: '1',
-        borderRadius: 2
-      }}
-    >
-      <Box
-        sx={{
-          backgroundColor: '#4D90FE',
-          p: 1
-        }}
-      >
-        <Typography variant="subtitle1" sx={{ fontWeight: 'bold', color: 'white' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', boxShadow: '1', borderRadius: 2 }}>
+      <div style={{ backgroundColor: '#4D90FE', padding: '8px' }}>
+        <Typography.Title level={5} style={{ fontWeight: 'bold', color: 'white' }}>
           Map Autocomplete Search
-        </Typography>
-      </Box>
-      <FormGroup sx={{ p: 1 }}>
-        {/* radio button section */}
-        <FormControl>
-          <RadioGroup defaultValue="" onChange={selectOptions} row>
-            <FormControlLabel value="" control={<Radio />} label="All" />
-            <FormControlLabel value="establishment" control={<Radio />} label="Establishment" />
-            <FormControlLabel value="address" control={<Radio />} label="Address" />
-            <FormControlLabel value="geocode" control={<Radio />} label="Geocode" />
-            <FormControlLabel value="(cities)" control={<Radio />} label="Cities" />
-            <FormControlLabel value="(regions)" control={<Radio />} label="Regions" />
-          </RadioGroup>
-        </FormControl>
+        </Typography.Title>
+      </div>
+      <div style={{ padding: '8px' }}>
+        {/* Radio button section */}
+        <Radio.Group defaultValue="" onChange={selectOptions} buttonStyle="solid">
+          <Radio.Button value="">All</Radio.Button>
+          <Radio.Button value="establishment">Establishment</Radio.Button>
+          <Radio.Button value="address">Address</Radio.Button>
+          <Radio.Button value="geocode">Geocode</Radio.Button>
+          <Radio.Button value="(cities)">Cities</Radio.Button>
+          <Radio.Button value="(regions)">Regions</Radio.Button>
+        </Radio.Group>
+      </div>
 
-        {/* checkbox section */}
-        <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-          <FormControlLabel control={<Checkbox defaultChecked disabled />} label="Bias to map viewport" />
-        </Box>
+      <div style={{ padding: '8px' }}>
+        {/* Checkbox section */}
+        <Row>
+          <Col>
+            <Checkbox defaultChecked disabled>
+              Bias to map viewport
+            </Checkbox>
+          </Col>
+        </Row>
+      </div>
 
-        {/* autocomplete searchbar section */}
-        <TextField
-          placeholder="Enter a location"
-          size="small"
+      <div style={{ padding: '8px' }}>
+        {/* Autocomplete searchbar section */}
+        <Input
+          placeholder="Enter a location" 
           value={keyword}
-          inputRef={textboxRef}
+          ref={textboxRef}
           onChange={handleKeywordInput}
         />
-      </FormGroup>
-    </Box>
+      </div>
+    </div>
   );
 };
 

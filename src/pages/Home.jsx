@@ -1,35 +1,35 @@
-import Div100vh from 'react-div-100vh';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import React from 'react';
+import { Typography } from 'antd';
+import 'antd/dist/reset.css';
 
 import MapContainer from 'components/GoogleMap/MapContainer';
 import AutoselectForm from 'components/AutoselectForm';
 
 import useShallowEqualSelector from 'helpers/useShallowEqualSelector';
 
+const { Text } = Typography;
+
 const Home = () => {
   const { place } = useShallowEqualSelector(state => state.googleMap);
 
   return (
-    <Div100vh style={{ position: 'relative' }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-        <Typography variant="h4">React - Google Maps - Rajesh TechMatrix</Typography>
-        <Box
-          sx={{ position: 'relative', height: '100%', width: '100%', display: 'flex', flexDirection: 'column', gap: 1 }}
-        >
-          <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
-            <Box sx={{ flex: 1 }}>
+    <div style={{ position: 'relative', height: '100vh' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '16px' }}>
+        <Typography.Title level={4}>React - Google Maps - TechMatrix</Typography.Title>
+        <div style={{ position: 'relative', height: '100%', width: '100%', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
+            <div style={{ flex: 1 }}>
               <AutoselectForm />
-            </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', flex: 1, gap: 2 }}>
-              <Typography variant="h5">Place name: {place.name || '-'}</Typography>
-              <Typography variant="h5">Place address: {place.address || '-'}</Typography>
-            </Box>
-          </Box>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', flex: 1, gap: '8px' }}>
+              <Typography.Title level={5}>Place name: {place.name || '-'}</Typography.Title>
+              <Typography.Title level={5}>Place address: {place.address || '-'}</Typography.Title>
+            </div>
+          </div>
           <MapContainer />
-        </Box>
-      </Box>
-    </Div100vh>
+        </div>
+      </div>
+    </div>
   );
 };
 
